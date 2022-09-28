@@ -1,36 +1,25 @@
 package ItHilel.HW10;
 
+import java.util.Random;
+
 public class HW10Main {
 
     public static void main(String[] args) {
-
-        int firstNum = 4;
-        int secondNum = 9;
+        Random random = new Random();
         int counter = 0;
 
         boolean isRunning = true;
 
-        for (int i = 1; i < 1000 && isRunning; i++) {
-
-            if (i == firstNum) {
-                firstNum += 10;
-                continue;
+        while (isRunning) {
+            int numberShuttle = random.nextInt(1, 200);
+            String verifyNum = Integer.toString(numberShuttle);
+            if (!verifyNum.contains("4") && !verifyNum.contains("9")) {
+                counter++;
+                System.out.println(counter + " Shuttle № " + numberShuttle);
             }
-            if (i == secondNum) {
-                secondNum += 10;
-                continue;
-            }
-            if (i > 39 && i < 50) {
-                continue;
-            }
-            if (i > 89 && i < 99 || i > 139 && i < 149) {
-                continue;
-            }
-            counter++;
-            if (counter >= 100) {
+            if (counter == 100) {
                 isRunning = false;
             }
-            System.out.println(counter + " Shuttle № " + i);
         }
     }
 }
